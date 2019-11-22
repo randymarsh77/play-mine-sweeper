@@ -22,6 +22,7 @@ const userProvidedMines = args.mines && parseInt(args.mines);
 const boardSize = userProvidedSize ? Math.min(100, Math.max(1, userProvidedSize)) : 8;
 const numberOfMines = userProvidedMines ? Math.min(boardSize * boardSize - 1, Math.max(1, userProvidedMines)) : boardSize;
 const coveredSquare = '⬛';
+const selectedCoveredSquare = '🔴';
 const mine = '💣';
 const explodedMine = '🔥'
 const flag = `🏳️${args.no_emoji_number_space ? '' : ' '}`;
@@ -166,7 +167,7 @@ function printBoard(board) {
 			acc += `\n `;
 		}
 
-		acc += `${i === playerLocation ? `${v}`.underline.red : v} `;
+		acc += `${i === playerLocation ? playerBoard[i] === coveredSquare ? selectedCoveredSquare : `${v}`.underline.red : v} `;
 		return acc;
 	}, '');
 
