@@ -13,6 +13,7 @@ process.on('SIGINT', () => process.exit(0));
 const parser = new ArgumentParser({ addHelp:true });
 parser.addArgument([ '-s', '--size' ], { help: 'The size of your board.' });
 parser.addArgument([ '-m', '--mines' ], { help: 'The number of mines to place.' });
+parser.addArgument('--no-emoji-number-space', { action: 'storeTrue', help: 'Terminals are different. This toggles the extra space off after the numbers in case that works better for you.' });
 const args = parser.parseArgs();
 
 const userProvidedSize = args.size && parseInt(args.size);
@@ -24,6 +25,17 @@ const coveredSquare = '⬛';
 const mine = '💣';
 const explodedMine = '🔥'
 const flag = '🏳️';
+const numbers = {
+	0: `0️⃣${args.no_emoji_number_space ? '' : ' '}`,
+	1: `1️⃣${args.no_emoji_number_space ? '' : ' '}`,
+	2: `2️⃣${args.no_emoji_number_space ? '' : ' '}`,
+	3: `3️⃣${args.no_emoji_number_space ? '' : ' '}`,
+	4: `4️⃣${args.no_emoji_number_space ? '' : ' '}`,
+	5: `5️⃣${args.no_emoji_number_space ? '' : ' '}`,
+	6: `6️⃣${args.no_emoji_number_space ? '' : ' '}`,
+	7: `7️⃣${args.no_emoji_number_space ? '' : ' '}`,
+	8: `8️⃣${args.no_emoji_number_space ? '' : ' '}`,
+};
 
 const indexes = [...Array(boardSize * boardSize).keys()];
 
@@ -86,7 +98,7 @@ function expose(index) {
 		process.exit(0)
 	} else {
 		if (adjacentMineCounts[index] !== 0) {
-			playerBoard[index] = adjacentMineCounts[index];
+			playerBoard[index] = numbers[adjacentMineCounts[index]];
 		} else {
 			exposeAllAdjacentZeros(index);
 		}
@@ -133,7 +145,7 @@ function exposeAllAdjacentZeros(index) {
 		return;
 	}
 
-	playerBoard[index] = 0;
+	playerBoard[index] = numbers[0];
 	adjacentIndexes(index).forEach(x => {
 		exposeAllAdjacentZeros(x);
 	});
