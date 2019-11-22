@@ -15,5 +15,6 @@ Optional arguments:
                         The number of mines to place.
   --no-emoji-number-space
                         Terminals are different. This toggles the extra space 
-                        off a
+                        off after the numbers in case that works better for 
+                        you.
 ```
