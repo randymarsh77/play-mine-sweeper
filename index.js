@@ -35,8 +35,8 @@ let playerLocation = 0;
 let hasPrintedOnce = false;
 
 const moves = {
-	c: k => k.ctrl ? process.exit(0) : _,
-	d: k => k.ctrl ? process.exit(0) : _,
+	c: k => k.ctrl ? process.exit(0) : {},
+	d: k => k.ctrl ? process.exit(0) : {},
 	f: () => playerBoard[playerLocation] = playerBoard[playerLocation] !== coveredSquare ? playerBoard[playerLocation] : flag,
 	up: () => playerLocation = playerLocation < boardSize ? playerLocation : playerLocation - boardSize,
 	down: () => playerLocation = playerLocation > boardSize * boardSize - boardSize ? playerLocation : playerLocation + boardSize,
