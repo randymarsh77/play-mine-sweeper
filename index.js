@@ -49,7 +49,7 @@ let hasPrintedOnce = false;
 const moves = {
 	c: k => k.ctrl ? process.exit(0) : {},
 	d: k => k.ctrl ? process.exit(0) : {},
-	f: () => playerBoard[playerLocation] = playerBoard[playerLocation] !== coveredSquare ? playerBoard[playerLocation] : flag,
+	f: () => playerBoard[playerLocation] = playerBoard[playerLocation] !== coveredSquare ? playerBoard[playerLocation] === flag ? coveredSquare : playerBoard[playerLocation] : flag,
 	up: () => playerLocation = playerLocation < boardSize ? playerLocation : playerLocation - boardSize,
 	down: () => playerLocation = playerLocation > boardSize * boardSize - boardSize ? playerLocation : playerLocation + boardSize,
 	left: () => playerLocation = playerLocation > 0 ? playerLocation - 1 : playerLocation,
@@ -71,7 +71,7 @@ process.stdin.on('keypress', (_, key) => {
 console.log('\n\nWelcome to MineSweeper!');
 console.log('Use the arrow keys to change the selected square.');
 console.log('Reveal locations by pressing `return`.');
-console.log('Flag locations by pressing `f`.');
+console.log('Flag (or un-flag) locations by pressing `f`.');
 console.log('Have fun!');
 console.log(`\n${boardSize}x${boardSize} with ${numberOfMines} mines.`);
 gameLoop();
@@ -89,7 +89,9 @@ function gameLoop() {
 }
 
 function expose(index) {
-	if (mineLocations.has(index)) {
+	if (playerBoard[index] === flag) {
+		gameLoop();
+	} else if (mineLocations.has(index)) {
 		exposeAllMines();
 		playerBoard[index] = explodedMine;
 		playerLocation = -1;
