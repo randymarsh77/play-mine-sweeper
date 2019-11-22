@@ -24,7 +24,7 @@ const numberOfMines = userProvidedMines ? Math.min(boardSize * boardSize - 1, Ma
 const coveredSquare = '⬛';
 const mine = '💣';
 const explodedMine = '🔥'
-const flag = '🏳️';
+const flag = `🏳️${args.no_emoji_number_space ? '' : ' '}`;
 const numbers = {
 	0: `0️⃣${args.no_emoji_number_space ? '' : ' '}`,
 	1: `1️⃣${args.no_emoji_number_space ? '' : ' '}`,
