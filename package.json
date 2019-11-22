@@ -6,6 +6,10 @@
   "bin": "index.js",
   "author": "Matt Preucil",
   "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/randymarsh77/play-mine-sweeper.git"
+  },
   "dependencies": {
     "argparse": "^1.0.10",
     "colors": "^1.4.0",
