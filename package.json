@@ -1,0 +1,14 @@
+{
+  "name": "play-mine-sweeper",
+  "version": "1.0.0",
+  "description": "Play MineSweeper in your terminal.",
+  "main": "index.js",
+  "bin": "index.js",
+  "author": "Matt Preucil",
+  "license": "MIT",
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "colors": "^1.4.0",
+    "keypress": "^0.2.1"
+  }
+}
