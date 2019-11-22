@@ -1,6 +1,6 @@
 {
   "name": "play-mine-sweeper",
-  "version": "1.0.1",
+  "version": "1.0.6",
   "description": "Play MineSweeper in your terminal.",
   "main": "index.js",
   "bin": "index.js",
