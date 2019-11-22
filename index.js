@@ -19,7 +19,7 @@ const args = parser.parseArgs();
 const userProvidedSize = args.size && parseInt(args.size);
 const userProvidedMines = args.mines && parseInt(args.mines);
 
-const boardSize = userProvidedSize ? Math.min(100, Max(1, userProvidedSize)) : 8;
+const boardSize = userProvidedSize ? Math.min(100, Math.max(1, userProvidedSize)) : 8;
 const numberOfMines = userProvidedMines ? Math.min(boardSize * boardSize - 1, Math.max(1, userProvidedMines)) : boardSize;
 const coveredSquare = '⬛';
 const mine = '💣';
