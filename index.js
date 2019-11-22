@@ -102,7 +102,7 @@ function expose(index) {
 		if (adjacentMineCounts[index] !== 0) {
 			playerBoard[index] = numbers[adjacentMineCounts[index]];
 		} else {
-			exposeAllAdjacentZeros(index);
+			exposeAllAdjacent(index);
 		}
 		gameLoop();
 	}
@@ -142,14 +142,16 @@ function exposeAllMines() {
 	});
 }
 
-function exposeAllAdjacentZeros(index) {
-	if (playerBoard[index] !== coveredSquare || adjacentMineCounts[index] !== 0 || mineLocations.has(index)) {
+function exposeAllAdjacent(index) {
+	playerBoard[index] = numbers[adjacentMineCounts[index]];
+	if (adjacentMineCounts[index] !== 0) {
 		return;
 	}
 
-	playerBoard[index] = numbers[0];
 	adjacentIndexes(index).forEach(x => {
-		exposeAllAdjacentZeros(x);
+		if (playerBoard[x] === coveredSquare) {
+			exposeAllAdjacent(x);
+		}
 	});
 }
 
