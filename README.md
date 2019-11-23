@@ -18,3 +18,5 @@ Optional arguments:
                         off after the numbers in case that works better for 
                         you.
 ```
+
+![](https://raw.githubusercontent.com/randymarsh77/play-mine-sweeper/master/demo.gif)
